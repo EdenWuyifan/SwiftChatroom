@@ -29,6 +29,14 @@
 		F44002F52B3E1F8E00A2600A /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F44002F42B3E1F8E00A2600A /* GoogleSignInSwift */; };
 		F44002F72B3E207F00A2600A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44002F62B3E207F00A2600A /* GoogleService-Info.plist */; };
 		F44002FB2B3E45AC00A2600A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F44002FA2B3E45AC00A2600A /* SDWebImageSwiftUI */; };
+		F457783E2B45E553002BC9D9 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F457783D2B45E553002BC9D9 /* NewChatView.swift */; };
+		F45778432B474A57002BC9D9 /* NewChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45778422B474A56002BC9D9 /* NewChatViewModel.swift */; };
+		F4DEBE232B3F7B5200AA200E /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE222B3F7B5200AA200E /* Chat.swift */; };
+		F4DEBE252B3F7BB100AA200E /* ChatroomUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE242B3F7BB100AA200E /* ChatroomUser.swift */; };
+		F4DEBE272B3F7DFB00AA200E /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE262B3F7DFB00AA200E /* ContactView.swift */; };
+		F4DEBE292B3F7E4400AA200E /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */; };
+		F4DEBE2C2B3F8A6100AA200E /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE2B2B3F8A6100AA200E /* Date+Helpers.swift */; };
+		F4DEBE2E2B3F993800AA200E /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +76,14 @@
 		F44002EF2B3E1E6E00A2600A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		F44002F62B3E207F00A2600A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F44002F82B3E20B900A2600A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F457783D2B45E553002BC9D9 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
+		F45778422B474A56002BC9D9 /* NewChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewModel.swift; sourceTree = "<group>"; };
+		F4DEBE222B3F7B5200AA200E /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F4DEBE242B3F7BB100AA200E /* ChatroomUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomUser.swift; sourceTree = "<group>"; };
+		F4DEBE262B3F7DFB00AA200E /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
+		F4DEBE2B2B3F8A6100AA200E /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
+		F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +183,9 @@
 			isa = PBXGroup;
 			children = (
 				F44002D92B3E02A300A2600A /* Message.swift */,
+				F4DEBE222B3F7B5200AA200E /* Chat.swift */,
+				F4DEBE242B3F7BB100AA200E /* ChatroomUser.swift */,
+				F4DEBE2B2B3F8A6100AA200E /* Date+Helpers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,8 +193,9 @@
 		F44002DB2B3E030A00A2600A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F457783F2B45E579002BC9D9 /* NewChatView */,
+				F4DEBE2A2B3F7E4B00AA200E /* ContactView */,
 				F44002DC2B3E112700A2600A /* ChatView */,
-				F44002D62B3DFEE300A2600A /* MessageView.swift */,
 				F44002DF2B3E13E800A2600A /* SignInView.swift */,
 			);
 			path = Views;
@@ -184,6 +204,7 @@
 		F44002DC2B3E112700A2600A /* ChatView */ = {
 			isa = PBXGroup;
 			children = (
+				F44002D62B3DFEE300A2600A /* MessageView.swift */,
 				F44002D42B3DFEC000A2600A /* ChatView.swift */,
 				F44002DD2B3E113F00A2600A /* ChatViewModel.swift */,
 			);
@@ -197,6 +218,25 @@
 				F44002EF2B3E1E6E00A2600A /* AuthManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		F457783F2B45E579002BC9D9 /* NewChatView */ = {
+			isa = PBXGroup;
+			children = (
+				F457783D2B45E553002BC9D9 /* NewChatView.swift */,
+				F45778422B474A56002BC9D9 /* NewChatViewModel.swift */,
+			);
+			path = NewChatView;
+			sourceTree = "<group>";
+		};
+		F4DEBE2A2B3F7E4B00AA200E /* ContactView */ = {
+			isa = PBXGroup;
+			children = (
+				F4DEBE262B3F7DFB00AA200E /* ContactView.swift */,
+				F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */,
+				F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */,
+			);
+			path = ContactView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,10 +385,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44002EE2B3E1E6100A2600A /* DatabaseManager.swift in Sources */,
+				F457783E2B45E553002BC9D9 /* NewChatView.swift in Sources */,
 				F44002F02B3E1E6E00A2600A /* AuthManager.swift in Sources */,
+				F4DEBE292B3F7E4400AA200E /* ContactRowView.swift in Sources */,
 				F44002D72B3DFEE300A2600A /* MessageView.swift in Sources */,
+				F4DEBE232B3F7B5200AA200E /* Chat.swift in Sources */,
 				F44002E02B3E13E800A2600A /* SignInView.swift in Sources */,
+				F4DEBE252B3F7BB100AA200E /* ChatroomUser.swift in Sources */,
+				F4DEBE2E2B3F993800AA200E /* ContactViewModel.swift in Sources */,
+				F45778432B474A57002BC9D9 /* NewChatViewModel.swift in Sources */,
 				F44002AD2B3DFE1C00A2600A /* ContentView.swift in Sources */,
+				F4DEBE272B3F7DFB00AA200E /* ContactView.swift in Sources */,
+				F4DEBE2C2B3F8A6100AA200E /* Date+Helpers.swift in Sources */,
 				F44002DA2B3E02A300A2600A /* Message.swift in Sources */,
 				F44002D52B3DFEC100A2600A /* ChatView.swift in Sources */,
 				F44002DE2B3E113F00A2600A /* ChatViewModel.swift in Sources */,

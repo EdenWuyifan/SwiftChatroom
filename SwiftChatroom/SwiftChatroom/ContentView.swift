@@ -23,7 +23,8 @@ struct ContentView: View {
         } else {
             NavigationStack {
                 ZStack {
-                    ChatView()
+                    ContactView()
+//                    ChatView(chat: Chat.testChat[0])
                 }
                 .navigationTitle("Chatroom")
                 .navigationBarTitleDisplayMode(.inline)

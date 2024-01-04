@@ -12,18 +12,11 @@ import GoogleSignIn
 import GoogleSignInSwift
 
 
-struct ChatroomUser {
-    let uid: String
-    let name: String
-    let email: String?
-    let photoUrl: String?
-}
-
-
 enum GoogleSignInError: Error {
     case unableToGrabTopVC
     case signInPresentationError
     case authSignInError
+    case sendToFirebaseError
 }
 
 final class AuthManager {
@@ -84,7 +77,13 @@ final class AuthManager {
                     email: result.user.email,
                     photoUrl: result.user.photoURL?.absoluteString
                 )
-                completion(.success(user))
+                DatabaseManager.shared.sendUserToDatabase(user: user)  { [weak self] success in
+                    if success {
+                        completion(.success(user))
+                    } else {
+                        completion(.failure(.sendToFirebaseError))
+                    }
+                }
             }
         }
     }

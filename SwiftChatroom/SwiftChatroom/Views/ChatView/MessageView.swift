@@ -93,6 +93,7 @@ struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         MessageView(
             message: Message(
+                chatId: "1",
                 userId: "12345",
                 text: "Test message",
                 photoUrl: "",

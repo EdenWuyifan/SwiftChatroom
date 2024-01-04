@@ -11,6 +11,7 @@ import Foundation
 struct Message: Decodable, Identifiable, Equatable, Hashable {
     var id = UUID()
     
+    let chatId: String
     let userId: String
     let text: String
     let photoUrl: String?

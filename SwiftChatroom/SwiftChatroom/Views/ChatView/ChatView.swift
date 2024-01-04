@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ChatView: View {
-    @StateObject var chatViewModel = ChatViewModel()
+    var chatViewModel: ChatViewModel
     @State var text = ""
+    
+    init(chatViewModel: ChatViewModel) {
+        self.chatViewModel = chatViewModel
+    }
     
     var body: some View {
         VStack {
@@ -22,7 +26,7 @@ struct ChatView: View {
                             MessageView(message: message).id(idx)
                         }
                         .onChange(of: chatViewModel.messages) { newValue in
-                            scrollView.scrollTo(chatViewModel.messages.count - 1, anchor: .bottom)
+                            scrollView.scrollTo((chatViewModel.messages.count) - 1, anchor: .bottom)
                         }
                     }
                 }
@@ -67,6 +71,6 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView(chatViewModel: ChatViewModel.mockData)
     }
 }
