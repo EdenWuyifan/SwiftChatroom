@@ -33,6 +33,14 @@ class ChatViewModel: ObservableObject {
                 completion(false)
             }
         }
+        DatabaseManager.shared.sendChatToOtherUserDatabase(chat: chat) { [weak self] success in
+            if success {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
         
         DatabaseManager.shared.sendMessageToDatabase(message: msg) { [weak self] success in
             if success {
@@ -47,12 +55,19 @@ class ChatViewModel: ObservableObject {
         chat.latestMessage = LatestMessage(
             lastestMessageTime: message.createAt,
             lastestMessageText: message.text,
-            isRead: false
+            isRead: true
         )
     }
     
-    func markChatAsRead() {
+    func markChatAsRead(completion: @escaping (Bool) -> Void) {
         chat.latestMessage?.isRead = true
+        DatabaseManager.shared.sendChatToDatabase(chat: chat) { [weak self] success in
+            if success {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
     
     func refresh() {

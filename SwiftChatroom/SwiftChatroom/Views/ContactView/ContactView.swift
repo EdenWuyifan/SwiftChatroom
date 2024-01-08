@@ -29,7 +29,6 @@ struct ContactView: View {
             }
             .fullScreenCover(isPresented: $shouldShowNewMessageScreen) {
                 NewChatView(didSelectNewUser: { chatroomUser in
-                    print(chatroomUser.name)
                     self.chatroomUser = chatroomUser
                     
                     self.shouldNavigateToChatView.toggle()
@@ -42,12 +41,21 @@ struct ContactView: View {
         List {
             ForEach(contactViewModel.getSortedFilteredChats(query: query)) { chat in
                 //            ForEach(ContactViewModel.mockChat) { chat in
+                let chatView = ChatView(
+                    chatViewModel: (contactViewModel.chatViewModels.keys.contains(chat.chatId)) ? contactViewModel.chatViewModels[chat.chatId]!: ChatViewModel(chat: chat, messages: [Message]())
+                )
                 ZStack {
                     ContactRowView(chat: chat)
                     
-                    NavigationLink(destination: ChatView(
-                        chatViewModel: (contactViewModel.chatViewModels.keys.contains(chat.chatId)) ? contactViewModel.chatViewModels[chat.chatId]!: ChatViewModel(chat: chat, messages: [Message]())
-                    )) {
+                    NavigationLink(destination: chatView.onAppear {
+                        chatView.chatViewModel.markChatAsRead { success in
+                            if success {
+                                
+                            } else {
+                                print("markChatAsRead fail")
+                            }
+                        }
+                    }) {
                         EmptyView()
                     }
                     .buttonStyle(PlainButtonStyle())

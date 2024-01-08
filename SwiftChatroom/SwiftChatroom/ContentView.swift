@@ -36,7 +36,7 @@ struct ContentView: View {
                                 try AuthManager.shared.signOut()
                                 showSignIn = true
                             } catch {
-                                print("Error signing out.")
+                                print("Error signing out")
                             }
                         } label: {
                             Text("Sign Out")

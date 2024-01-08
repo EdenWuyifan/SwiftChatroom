@@ -26,7 +26,6 @@ class ContactViewModel: ObservableObject {
                 print(error)
             }
         }
-        print(self.chats)
         
         subscribeToChatPublisher()
         subscribeToMessagePublisher()
@@ -72,7 +71,7 @@ class ContactViewModel: ObservableObject {
         for chat in self.chats {
             chatIds.append(chat.chatId)
         }
-        print("ChatIds", chatIds)
+//        print("ChatIds", chatIds)
         
         DatabaseManager.shared.fetchMessages(chatIds: chatIds) { [weak self] result in
             switch (result) {

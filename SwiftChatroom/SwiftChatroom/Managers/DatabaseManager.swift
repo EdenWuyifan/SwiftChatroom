@@ -98,6 +98,12 @@ final class DatabaseManager {
     }
     
     func sendChatToDatabase(chat: Chat, completion: @escaping (Bool) -> Void) {
+        guard let user = AuthManager.shared.getCurrentUser() else {
+            completion(false)
+            return
+        }
+        
+        // Chat for current user
         let data = [
             "chatId": chat.chatId,
             "createAt": Timestamp(date: chat.createAt),
@@ -106,14 +112,10 @@ final class DatabaseManager {
             "otherUserPhotoUrl": chat.otherUserPhotoUrl ?? "Error",
             "lastestMessageTime": Timestamp(date: chat.latestMessage?.lastestMessageTime ?? chat.createAt),
             "lastestMessageText": chat.latestMessage?.lastestMessageText ?? "Error",
-            "isRead": chat.latestMessage?.isRead ?? false
+            "isRead": true
         ] as [String: Any]
         
-        guard let uid = AuthManager.shared.getCurrentUser()?.uid else {
-            completion(false)
-            return
-        }
-        userRef.document(uid).collection("chats").document(chat.chatId).setData(data) { error in
+        userRef.document(user.uid).collection("chats").document(chat.chatId).setData(data) { error in
             guard error == nil else {
                 completion(false)
                 return
@@ -122,23 +124,24 @@ final class DatabaseManager {
         }
     }
     
-    func sendChatToOtherUsersDatabase(chat: Chat, completion: @escaping (Bool) -> Void) {
-        guard let chatroomUser = AuthManager.shared.getCurrentUser() else {
+    func sendChatToOtherUserDatabase(chat: Chat, completion: @escaping (Bool) -> Void) {
+        guard let user = AuthManager.shared.getCurrentUser() else {
             completion(false)
             return
         }
-        let data = [
+        // Chat for other user
+        let otherUserData = [
             "chatId": chat.chatId,
             "createAt": Timestamp(date: chat.createAt),
-            "otherUserId": chatroomUser.uid,
-            "otherUserName": chatroomUser.name,
-            "otherUserPhotoUrl": chatroomUser.photoUrl ?? "Error",
+            "otherUserId": user.uid,
+            "otherUserName": user.name,
+            "otherUserPhotoUrl": user.photoUrl ?? "Error",
             "lastestMessageTime": Timestamp(date: chat.latestMessage?.lastestMessageTime ?? chat.createAt),
             "lastestMessageText": chat.latestMessage?.lastestMessageText ?? "Error",
-            "isRead":  chat.latestMessage?.isRead ?? false
-        ] as [String: Any]
+            "isRead": false
+        ] as [String : Any]
         
-        userRef.document(chat.otherUserId).collection("chats").addDocument(data: data) { error in
+        userRef.document(chat.otherUserId).collection("chats").document(chat.chatId).setData(otherUserData) { error in
             guard error == nil else {
                 completion(false)
                 return
@@ -164,19 +167,6 @@ final class DatabaseManager {
             completion(true)
         }
     }
-    
-    
-//    func listenForNewUsersInDatabase() {
-//        userRef.limit(to: 10).addSnapshotListener{ [weak self] snapshot, error in
-//            guard let snapshot = snapshot, error == nil, let strongSelf = self else {
-//                print("listenForNewUsersInDatabase: ", error)
-//                return
-//            }
-//
-//            let users = strongSelf.createChatroomUsersFromFirebaseSnapshot(snapshot: snapshot)
-//            strongSelf.chatroomUsersPublisher.send(users)
-//        }
-//    }
     
     
     func listenForNewChatsInDatabase() {

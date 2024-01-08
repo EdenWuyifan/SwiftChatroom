@@ -16,17 +16,9 @@ class NewChatViewModel: ObservableObject {
             switch (result) {
             case .success(let users):
                 self?.chatroomUsers = users
-                print("Users", users)
             case .failure(let error):
                 print(error)
             }
         }
-    }
-    
-    func createNewChat(chatroomUser: ChatroomUser) -> Chat {
-        let newChatId = UUID().uuidString
-        let chat = Chat(chatId: newChatId, createAt: Date(), otherUserId: chatroomUser.uid, otherUserName: chatroomUser.name, otherUserPhotoUrl: chatroomUser.photoUrl ?? "Error", latestMessage: LatestMessage(lastestMessageTime: Date(), lastestMessageText: "", isRead: true))
-        
-        return chat
     }
 }

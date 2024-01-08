@@ -22,13 +22,6 @@ struct NewChatView: View {
         NavigationView {
             List {
                 ForEach(newChatViewModel.chatroomUsers) { chatroomUser in
-                    //                        let chat = newChatViewModel.createNewChat(chatroomUser: chatroomUser)
-                    //                        let chatView: ChatView = ChatView(
-                    //                            chatViewModel: ChatViewModel(
-                    //                                chat: chat,
-                    //                                messages: [Message]()
-                    //                            )
-                    //                        )
                     Button {
                         didSelectNewUser(chatroomUser)
                         presentationMode.wrappedValue.dismiss()
