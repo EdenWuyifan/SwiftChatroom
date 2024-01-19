@@ -13,6 +13,7 @@ class ContactViewModel: ObservableObject {
     @Published var chats = [Chat]()
     @Published var chatViewModels = [String: ChatViewModel]()
     @Published var messages = [Message]()
+    @Published var pinnedChats: Set<String> = [] // Stores the chatIds of pinned chats
     
     var chatSubscribers: Set<AnyCancellable> = []
     var messageSubscribers: Set<AnyCancellable> = []
@@ -54,16 +55,29 @@ class ContactViewModel: ObservableObject {
     }
     
     func getSortedFilteredChats(query: String) -> [Chat] {
-        let sortedChats = chats.sorted {
+        var sortedChats = chats.sorted {
             guard let date1 = $0.latestMessage?.lastestMessageTime as Date? else { return false }
             guard let date2 = $1.latestMessage?.lastestMessageTime as Date? else { return false }
             return date1 > date2
+        }
+        
+        // Pinned
+        sortedChats = chats.sorted { (a, b) -> Bool in
+            return pinnedChats.contains(a.chatId)
         }
         
         if query == "" {
             return sortedChats
         }
         return sortedChats.filter{ $0.otherUserName.lowercased().contains(query.lowercased()) }
+    }
+    
+    func updateChatPin(chatId: String) {
+        if pinnedChats.contains(chatId) {
+            pinnedChats.remove(chatId)
+        } else {
+            pinnedChats.insert(chatId)
+        }
     }
     
     
