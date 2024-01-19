@@ -14,6 +14,7 @@ struct ContactView: View {
     
     @State var shouldNavigateToChatView = false
     @State var shouldShowNewMessageScreen = false
+    @State var shouldBeInHostMode = false
     @State var chatroomUser: ChatroomUser?
     
     
@@ -21,7 +22,6 @@ struct ContactView: View {
         NavigationView {
             VStack {
                 chatListView
-                
                 
                 NavigationLink("", isActive: $shouldNavigateToChatView) {
                     ChatView(chatViewModel: contactViewModel.createNewChatViewModel(chatroomUser: chatroomUser))
@@ -39,8 +39,9 @@ struct ContactView: View {
     
     private var chatListView: some View {
         List {
+            
             ForEach(contactViewModel.getSortedFilteredChats(query: query)) { chat in
-                //            ForEach(ContactViewModel.mockChat) { chat in
+//            ForEach(ContactViewModel.mockChat) { chat in
                 let chatView = ChatView(
                     chatViewModel: (contactViewModel.chatViewModels.keys.contains(chat.chatId)) ? contactViewModel.chatViewModels[chat.chatId]!: ChatViewModel(chat: chat, messages: [Message]())
                 )
@@ -48,13 +49,7 @@ struct ContactView: View {
                     ContactRowView(chat: chat)
                     
                     NavigationLink(destination: chatView.onAppear {
-                        chatView.chatViewModel.markChatAsRead { success in
-                            if success {
-                                
-                            } else {
-                                print("markChatAsRead fail")
-                            }
-                        }
+                        chatView.chatViewModel.markChatAsRead(newValue: true)
                     }) {
                         EmptyView()
                     }
@@ -62,11 +57,25 @@ struct ContactView: View {
                     .frame(width: 0)
                     .opacity(0)
                 }
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button(action: {
+                        chatView.chatViewModel.markChatAsRead(newValue: !chat.latestMessage!.isRead)
+                    }, label: {
+                        if !chat.latestMessage!.isRead {
+                            Label("Read", systemImage: "text.bubble")
+                        } else {
+                            Label("Unread", systemImage: "circle.fill")
+                        }
+                    })
+                }
             }
         }
         .listStyle(PlainListStyle())
-        .navigationTitle("Chats")
+        .navigationTitle("Message")
+        .navigationBarTitleDisplayMode(.inline)
         .searchable(text: $query)
+        .toolbarBackground(Color(red: 1, green: 0.77, blue: 0.18), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
         .navigationBarItems(
             trailing:Button {
                 shouldShowNewMessageScreen.toggle()

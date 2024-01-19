@@ -37,6 +37,8 @@
 		F4DEBE292B3F7E4400AA200E /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */; };
 		F4DEBE2C2B3F8A6100AA200E /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE2B2B3F8A6100AA200E /* Date+Helpers.swift */; };
 		F4DEBE2E2B3F993800AA200E /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */; };
+		F4E965A12B55F68100791A1C /* HostModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E965A02B55F68100791A1C /* HostModeView.swift */; };
+		F4E965A32B55F6D300791A1C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E965A22B55F6D300791A1C /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
 		F4DEBE2B2B3F8A6100AA200E /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		F4E965A02B55F68100791A1C /* HostModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostModeView.swift; sourceTree = "<group>"; };
+		F4E965A22B55F6D300791A1C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,8 @@
 				F4DEBE262B3F7DFB00AA200E /* ContactView.swift */,
 				F4DEBE282B3F7E4400AA200E /* ContactRowView.swift */,
 				F4DEBE2D2B3F993800AA200E /* ContactViewModel.swift */,
+				F4E965A02B55F68100791A1C /* HostModeView.swift */,
+				F4E965A22B55F6D300791A1C /* MainView.swift */,
 			);
 			path = ContactView;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				F44002F02B3E1E6E00A2600A /* AuthManager.swift in Sources */,
 				F4DEBE292B3F7E4400AA200E /* ContactRowView.swift in Sources */,
 				F44002D72B3DFEE300A2600A /* MessageView.swift in Sources */,
+				F4E965A32B55F6D300791A1C /* MainView.swift in Sources */,
 				F4DEBE232B3F7B5200AA200E /* Chat.swift in Sources */,
 				F44002E02B3E13E800A2600A /* SignInView.swift in Sources */,
 				F4DEBE252B3F7BB100AA200E /* ChatroomUser.swift in Sources */,
@@ -401,6 +408,7 @@
 				F44002D52B3DFEC100A2600A /* ChatView.swift in Sources */,
 				F44002DE2B3E113F00A2600A /* ChatViewModel.swift in Sources */,
 				F44002AB2B3DFE1C00A2600A /* SwiftChatroomApp.swift in Sources */,
+				F4E965A12B55F68100791A1C /* HostModeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

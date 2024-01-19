@@ -66,6 +66,7 @@ class ContactViewModel: ObservableObject {
         return sortedChats.filter{ $0.otherUserName.lowercased().contains(query.lowercased()) }
     }
     
+    
     func refreshMessagesSubscriber() {
         var chatIds = [String]()
         for chat in self.chats {
@@ -99,7 +100,7 @@ class ContactViewModel: ObservableObject {
             }
         }
         let newChatId = UUID().uuidString
-        var chat = Chat(chatId: newChatId, createAt: Date(), otherUserId: tempUser.uid, otherUserName: tempUser.name, otherUserPhotoUrl: tempUser.photoUrl ?? "Error", latestMessage: LatestMessage(lastestMessageTime: Date(), lastestMessageText: "", isRead: true))
+        var chat = Chat(chatId: newChatId, createAt: Date(), otherUserId: tempUser.uid, otherUserName: tempUser.name, otherUserPhotoUrl: tempUser.photoUrl ?? "Error", latestMessage: LatestMessage(lastestMessageTime: Date(), lastestMessageText: "", isRead: true), unreadCounts: 0)
         return ChatViewModel(chat: chat, messages: [Message]())
     }
     
@@ -127,7 +128,8 @@ extension ContactViewModel {
                 lastestMessageTime: Date(),
                 lastestMessageText: "This is Kim, please reply to me immediately! Hihihihihihihihihihihihihihihi~~",
                 isRead: false
-             )
+             ),
+             unreadCounts: 2
         ),
         Chat(chatId: "2",
              createAt: Date(),
@@ -138,7 +140,8 @@ extension ContactViewModel {
                 lastestMessageTime: Date(),
                 lastestMessageText: "Okayyyy :)",
                 isRead: true
-             )
+             ),
+             unreadCounts: 0
         )
     ]
     

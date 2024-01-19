@@ -59,13 +59,13 @@ class ChatViewModel: ObservableObject {
         )
     }
     
-    func markChatAsRead(completion: @escaping (Bool) -> Void) {
-        chat.latestMessage?.isRead = true
+    func markChatAsRead(newValue: Bool) {
+        chat.latestMessage?.isRead = newValue
         DatabaseManager.shared.sendChatToDatabase(chat: chat) { [weak self] success in
             if success {
-                completion(true)
+                
             } else {
-                completion(false)
+                print("markChatAsRead fail")
             }
         }
     }
@@ -87,7 +87,8 @@ extension ChatViewModel {
                     lastestMessageTime: Date(),
                     lastestMessageText: "This is Kim, please reply to me immediately! Hihihihihihihihihihihihihihihi~~",
                     isRead: false
-                   )
+                   ),
+                   unreadCounts: 7
                   ),
         messages: [
             Message(chatId: "1", userId: "12345", text: "Test message!!!", photoUrl: "", createAt: Date()),

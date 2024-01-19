@@ -112,7 +112,8 @@ final class DatabaseManager {
             "otherUserPhotoUrl": chat.otherUserPhotoUrl ?? "Error",
             "lastestMessageTime": Timestamp(date: chat.latestMessage?.lastestMessageTime ?? chat.createAt),
             "lastestMessageText": chat.latestMessage?.lastestMessageText ?? "Error",
-            "isRead": true
+            "isRead": chat.latestMessage?.isRead ?? true,
+            "unreadCounts": chat.latestMessage?.isRead ?? true ? 0 : 1
         ] as [String: Any]
         
         userRef.document(user.uid).collection("chats").document(chat.chatId).setData(data) { error in
@@ -138,7 +139,8 @@ final class DatabaseManager {
             "otherUserPhotoUrl": user.photoUrl ?? "Error",
             "lastestMessageTime": Timestamp(date: chat.latestMessage?.lastestMessageTime ?? chat.createAt),
             "lastestMessageText": chat.latestMessage?.lastestMessageText ?? "Error",
-            "isRead": false
+            "isRead": false,
+            "unreadCounts": chat.unreadCounts + 1
         ] as [String : Any]
         
         userRef.document(chat.otherUserId).collection("chats").document(chat.chatId).setData(otherUserData) { error in
@@ -237,8 +239,9 @@ final class DatabaseManager {
             let lastestMessageTime = data["lastestMessageTime"] as? Timestamp ?? Timestamp()
             let lastestMessageText = data["lastestMessageText"] as? String ?? "Error"
             let isRead = data["isRead"] as? Bool ?? false
+            let unreadCounts = data["unreadCounts"] as? Int ?? 0
             
-            let chat = Chat(chatId: chatId, createAt: createAt.dateValue(), otherUserId: otherUserId, otherUserName: otherUserName, otherUserPhotoUrl: otherUserPhotoUrl, latestMessage: LatestMessage(lastestMessageTime: lastestMessageTime.dateValue(), lastestMessageText: lastestMessageText, isRead: isRead))
+            let chat = Chat(chatId: chatId, createAt: createAt.dateValue(), otherUserId: otherUserId, otherUserName: otherUserName, otherUserPhotoUrl: otherUserPhotoUrl, latestMessage: LatestMessage(lastestMessageTime: lastestMessageTime.dateValue(), lastestMessageText: lastestMessageText, isRead: isRead), unreadCounts: unreadCounts)
             chats.append(chat)
         }
         

@@ -17,24 +17,19 @@ class Chat: Identifiable {
     let otherUserName: String
     let otherUserPhotoUrl: String?
     var latestMessage: LatestMessage?
+    var unreadCounts: Int
     
 //    var chatViewModel: ChatViewModel?
     
-    init(chatId: String, createAt: Date, otherUserId: String, otherUserName: String, otherUserPhotoUrl: String, latestMessage: LatestMessage) {
+    init(chatId: String, createAt: Date, otherUserId: String, otherUserName: String, otherUserPhotoUrl: String, latestMessage: LatestMessage, unreadCounts: Int) {
         self.chatId = chatId
         self.createAt = createAt
         self.otherUserId = otherUserId
         self.otherUserName = otherUserName
         self.otherUserPhotoUrl = otherUserPhotoUrl
         self.latestMessage = latestMessage
-        
-//        self.chatViewModel = self.generateChatViewModel()
+        self.unreadCounts = unreadCounts
     }
-    
-//    func generateChatViewModel() -> ChatViewModel {
-//        let chatViewModel = ChatViewModel(chat: self)
-//        return chatViewModel
-//    }
     
     func fetchPhotoUrl() -> URL? {
         guard let photoUrl = otherUserPhotoUrl, let url = URL(string: photoUrl) else {
@@ -64,7 +59,8 @@ extension Chat {
                 lastestMessageTime: Date(),
                 lastestMessageText: "This is Kim, please reply to me immediately! Hihihihihihihihihihihihihihihi~~",
                 isRead: false
-             )
+             ),
+             unreadCounts: 2
         ),
         Chat(chatId: "2",
              createAt: Date(),
@@ -75,7 +71,8 @@ extension Chat {
                 lastestMessageTime: Date(),
                 lastestMessageText: "Okayyyy :)",
                 isRead: true
-             )
+             ),
+             unreadCounts: 0
         )
     ]
 }

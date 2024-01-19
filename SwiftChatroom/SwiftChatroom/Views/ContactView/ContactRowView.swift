@@ -29,26 +29,34 @@ struct ContactRowView: View {
             }
             
             ZStack {
-                VStack(alignment: .leading, spacing: 5) {
+                VStack(alignment: .leading, spacing: 10) {
                     HStack {
-                        Text(chat.otherUserName).bold()
+                        Text(chat.otherUserName)
+                            .font(
+                                .system(size: 14).weight(.bold)
+                            )
                         Spacer()
                         Text(chat.latestMessage?.lastestMessageTime.discriptiveString() ?? chat.createAt.discriptiveString())
+                            .font(
+                                .system(size: 14).weight(.medium)
+                            )
                     }
+                    .padding(.top, 32)
                     
                     HStack {
                         Text(chat.latestMessage?.lastestMessageText ?? "")
-                            .foregroundColor(Color(uiColor: .gray))
-                            .lineLimit(2)
+                            .font(.system(size: 14).weight(.medium))
+                            .foregroundColor(!(chat.latestMessage?.isRead ?? false) ? Color(uiColor: .black) : Color(uiColor: .gray))
+                            .lineLimit(1)
                             .frame(height: 50, alignment: .top)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.trailing, 20)
                     }
                 }
-                Circle()
-                    .foregroundColor(!(chat.latestMessage?.isRead ?? false) ? Color(uiColor: .systemBlue) : .clear)
-                    .frame(width: 18, height: 18)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+//                Circle()
+//                    .foregroundColor(!(chat.latestMessage?.isRead ?? false) ? Color(uiColor: .systemBlue) : .clear)
+//                    .frame(width: 18, height: 18)
+//                    .frame(maxWidth: .infinity, alignment: .trailing)
                 
             }
         }
