@@ -40,7 +40,7 @@ struct ContactView: View {
     private var chatListView: some View {
         List {
             ForEach(contactViewModel.getSortedFilteredChats(query: query)) { chat in
-//            ForEach(ContactViewModel.mockChat) { chat in
+//              ForEach(ContactViewModel.mockChat) { chat in
                 let chatView = ChatView(
                     chatViewModel: (contactViewModel.chatViewModels.keys.contains(chat.chatId)) ? contactViewModel.chatViewModels[chat.chatId]!: ChatViewModel(chat: chat, messages: [Message]())
                 )

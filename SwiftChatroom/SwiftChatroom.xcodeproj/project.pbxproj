@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F69D5D62B607A97005F4EE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F69D5D52B607A97005F4EE0 /* GoogleService-Info.plist */; };
 		F44002AB2B3DFE1C00A2600A /* SwiftChatroomApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44002AA2B3DFE1C00A2600A /* SwiftChatroomApp.swift */; };
 		F44002AD2B3DFE1C00A2600A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44002AC2B3DFE1C00A2600A /* ContentView.swift */; };
 		F44002AF2B3DFE1E00A2600A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44002AE2B3DFE1E00A2600A /* Assets.xcassets */; };
@@ -27,7 +28,6 @@
 		F44002F02B3E1E6E00A2600A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44002EF2B3E1E6E00A2600A /* AuthManager.swift */; };
 		F44002F32B3E1F8E00A2600A /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F44002F22B3E1F8E00A2600A /* GoogleSignIn */; };
 		F44002F52B3E1F8E00A2600A /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F44002F42B3E1F8E00A2600A /* GoogleSignInSwift */; };
-		F44002F72B3E207F00A2600A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F44002F62B3E207F00A2600A /* GoogleService-Info.plist */; };
 		F44002FB2B3E45AC00A2600A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F44002FA2B3E45AC00A2600A /* SDWebImageSwiftUI */; };
 		F457783E2B45E553002BC9D9 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F457783D2B45E553002BC9D9 /* NewChatView.swift */; };
 		F45778432B474A57002BC9D9 /* NewChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45778422B474A56002BC9D9 /* NewChatViewModel.swift */; };
@@ -59,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F69D5D32B6074A3005F4EE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/b2add990e6d5790a993af77a309c8683/Message/MessageTemp/96f24ade5d4009490f2655f05cefcaf4/File/Info.plist"; sourceTree = "<group>"; };
+		4F69D5D52B607A97005F4EE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F44002A72B3DFE1C00A2600A /* SwiftChatroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChatroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44002AA2B3DFE1C00A2600A /* SwiftChatroomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChatroomApp.swift; sourceTree = "<group>"; };
 		F44002AC2B3DFE1C00A2600A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		F44002DF2B3E13E800A2600A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F44002ED2B3E1E6100A2600A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		F44002EF2B3E1E6E00A2600A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		F44002F62B3E207F00A2600A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F44002F82B3E20B900A2600A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F457783D2B45E553002BC9D9 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		F45778422B474A56002BC9D9 /* NewChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewModel.swift; sourceTree = "<group>"; };
 		F4DEBE222B3F7B5200AA200E /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -145,8 +145,8 @@
 		F44002A92B3DFE1C00A2600A /* SwiftChatroom */ = {
 			isa = PBXGroup;
 			children = (
-				F44002F82B3E20B900A2600A /* Info.plist */,
-				F44002F62B3E207F00A2600A /* GoogleService-Info.plist */,
+				4F69D5D32B6074A3005F4EE0 /* Info.plist */,
+				4F69D5D52B607A97005F4EE0 /* GoogleService-Info.plist */,
 				F44002EC2B3E1E2900A2600A /* Managers */,
 				F44002DB2B3E030A00A2600A /* Views */,
 				F44002D82B3E028700A2600A /* Models */,
@@ -364,8 +364,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44002B22B3DFE1E00A2600A /* Preview Assets.xcassets in Resources */,
-				F44002F72B3E207F00A2600A /* GoogleService-Info.plist in Resources */,
 				F44002AF2B3DFE1E00A2600A /* Assets.xcassets in Resources */,
+				4F69D5D62B607A97005F4EE0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
